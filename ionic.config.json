@@ -1,0 +1,7 @@
+{
+  "name": "ygoCalculator",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

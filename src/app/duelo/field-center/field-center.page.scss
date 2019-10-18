@@ -1,0 +1,25 @@
+
+    ion-content{
+        --background: #fff url('../../../assets/img/fieldcenter.jpg') no-repeat center center / cover;
+    }
+     
+    .textFormat{
+        font-size: 75px;
+        color: #fff;
+    }
+
+    .textOrientation{
+        transform: rotate(180deg);
+    }
+
+
+    ion-grid.parametros{
+        height:100% !important;
+    }
+
+    ion-row.parent-row{
+        height: 100% !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
