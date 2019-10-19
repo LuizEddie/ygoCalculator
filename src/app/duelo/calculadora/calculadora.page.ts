@@ -44,6 +44,7 @@ export class CalculadoraPage implements OnInit {
           this.lifePoints = eval(this.lifePoints + this.pontosAlterados);
           this.pontosAlterados = "";
         }
+        this.fecharModal();
       }else{
         this.alertErro();
       }
@@ -62,7 +63,10 @@ apagar(tipo){
 }
 
 rebobinar(){
-  this.lifePoints = this.pontosMemoria;
+  if(this.pontosMemoria != ""){
+    this.lifePoints = this.pontosMemoria;
+  }
+  
 }
 
 
@@ -84,7 +88,8 @@ rebobinar(){
   fecharModal(){
     this.modalController.dismiss({
       'lifePoints': this.lifePoints,
-      'jogador': this.jogador
+      'jogador': this.jogador,
+      'pontosMemoria': this.pontosMemoria
     });
   }
 

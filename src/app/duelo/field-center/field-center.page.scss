@@ -1,10 +1,16 @@
 
     ion-content{
-        --background: #fff url('../../../assets/img/fieldcenter.jpg') no-repeat center center / cover;
+        --background: #fff url('../../../assets/img/fieldcenter.jpg') no-repeat center center /100% 100%;
+        
     }
      
     .textFormat{
         font-size: 75px;
+        color: #fff;
+    }
+
+    .fontJogador{
+        font-size: 50px;
         color: #fff;
     }
 
@@ -22,4 +28,6 @@
         align-items: center !important;
         justify-content: center !important;
     }
+
+
 

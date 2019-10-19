@@ -1,25 +1,13 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-grid>
-    <ion-row>
+  <ion-grid class="center-grid">
+    <ion-row class="parent-row">
       <ion-col size="6">
-        <ion-button (click)="tipoDuelo()" size="large" expand="block">Duelo</ion-button>
+        <ion-button (click)="tipoDuelo()" expand="block">Duelo</ion-button>
+        <ion-button expand="block">Pesquisa</ion-button>
       </ion-col>
       <ion-col size="6">
-        <ion-button size="large" expand="block">Pesquisa</ion-button>
-      </ion-col>
-      <ion-col size="6">
-        <ion-button size="large" expand="block">Banlist</ion-button>  
-      </ion-col>
-      <ion-col size="6">
-        <ion-button  size="large" expand="block">Opções</ion-button>
+        <ion-button expand="block">Banlist</ion-button>  
+        <ion-button expand="block">Opções</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

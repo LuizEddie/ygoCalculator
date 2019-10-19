@@ -38,12 +38,12 @@ export class HomePage {
        }
        this.router.navigate(['/duelo'], navigationExtras);
     }
-   },{
+   }/*,{
      text: "Personalizado",
      handler: ()=>{
        
     }
-   }]
+   }*/]
   
    alert.present();
 
