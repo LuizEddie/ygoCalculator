@@ -9,6 +9,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
   templateUrl: './field-center.page.html',
   styleUrls: ['./field-center.page.scss'],
 })
+
 export class FieldCenterPage implements OnInit {
 
   private jogador1 = {jogador: "", pontosDeVida: "", orientacao: "", pontosMemoria: ""};
