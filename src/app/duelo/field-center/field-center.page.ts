@@ -4,6 +4,13 @@ import { ModalController } from '@ionic/angular';
 import { CalculadoraPage } from '../calculadora/calculadora.page';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
+interface Jogador{
+  jogador: String,
+  pontosDeVida: String,
+  orientacao: String,
+  pontosMemoria: String
+}
+
 @Component({
   selector: 'app-field-center',
   templateUrl: './field-center.page.html',
@@ -12,14 +19,12 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 export class FieldCenterPage implements OnInit {
 
-  private jogador1 = {jogador: "", pontosDeVida: "", orientacao: "", pontosMemoria: ""};
-  private jogador2 = {jogador: "", pontosDeVida: "", orientacao: "", pontosMemoria: ""};
-
+  private jogador1;
+  private jogador2;
   private tipoDuelo = "";
 
   constructor(private router: Router, private modalController: ModalController, 
     private screen: ScreenOrientation) {
-    
     this.getTipoDuelo();
    }
 
@@ -32,21 +37,22 @@ export class FieldCenterPage implements OnInit {
       this.tipoDuelo = getNav.extras.state.tipo;
 
       if(this.tipoDuelo === "dueloClassico"){
-        this.setDuelistas('8000');
+        this.jogador1 = this.setDuelistas({jogador: "Jogador 1", pontosDeVida: "8000",
+         orientacao: "normal", pontosMemoria: ""});
+        this.jogador2 = this.setDuelistas({jogador: "Jogador 2", pontosDeVida: "8000",
+         orientacao: "invertido", pontosMemoria: ""});
       }else if(this.tipoDuelo === "speedDuel"){
-        this.setDuelistas('4000'); 
+        this.jogador1 = this.setDuelistas({jogador: "Jogador 1", pontosDeVida: "4000",
+         orientacao: "normal", pontosMemoria: ""});
+        this.jogador2 = this.setDuelistas({jogador: "Jogador 2", pontosDeVida: "4000",
+         orientacao: "invertido", pontosMemoria: ""}); 
       }
     }
   }
 
-  setDuelistas(pontosDeVida){
-    this.jogador1.jogador = "Jogador 1";
-    this.jogador1.pontosDeVida = pontosDeVida;
-    this.jogador1.orientacao = "normal";
-
-    this.jogador2.jogador = "Jogador 2";
-    this.jogador2.pontosDeVida = pontosDeVida;
-    this.jogador2.orientacao = "invertido";
+  setDuelistas(jogador: Jogador){
+    var jogador = jogador;
+    return jogador;
   }
 
   async callCalculadora(jogador){
