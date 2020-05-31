@@ -28,22 +28,12 @@ export class CalculadoraPage implements OnInit {
 
   realizarOperacao(){
     try{
-      if(this.pontosAlterados.startsWith("+") || this.pontosAlterados.startsWith("-") || this.pontosAlterados.startsWith("*") || this.pontosAlterados.startsWith("/")){
-        if(this.pontosAlterados.substring(0,2) === "//"){
-          this.pontosAlterados = "/2";
-          this.pontosMemoria = this.lifePoints;
-          this.lifePoints = eval(this.lifePoints + this.pontosAlterados);
-          this.pontosAlterados="";
-        }else if(this.pontosAlterados.substring(0,2) === "**"){
-          this.pontosAlterados = "*2";
-          this.pontosMemoria = this.lifePoints;
-          this.lifePoints = eval(this.lifePoints + this.pontosAlterados);
-          this.pontosAlterados="";
-        }else{
+      if(this.pontosAlterados.startsWith("+") || this.pontosAlterados.startsWith("-") || this.pontosAlterados.startsWith("*") || this.pontosAlterados.startsWith("/") || this.pontosAlterados.startsWith("(")){
+        
           this.pontosMemoria = this.lifePoints;
           this.lifePoints = eval(this.lifePoints + this.pontosAlterados);
           this.pontosAlterados = "";
-        }
+        
         this.fecharModal();
       }else{
         this.alertErro();
