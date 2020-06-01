@@ -1,7 +1,8 @@
 {
   "name": "ygoCalculator",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'field-center', loadChildren: './duelo/field-center/field-center.module#FieldCenterPageModule' },
   { path: 'classico', loadChildren: './duelo/classico/classico.module#ClassicoPageModule' },
   { path: 'calculadora', loadChildren: './duelo/calculadora/calculadora.module#CalculadoraPageModule' },
+  { path: 'banlist', loadChildren: './banlist/banlist.module#BanlistPageModule' },
 ];
 
 @NgModule({
