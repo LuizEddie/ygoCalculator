@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CalculadoraPage } from './duelo/calculadora/calculadora.page';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { DatabaseService } from 'src/app/provider/ygo/database.service';
+import { HTTP } from '@ionic-native/http/ngx'; 
 
 @NgModule({
   declarations: [AppComponent, CalculadoraPage],
@@ -21,7 +23,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ScreenOrientation,
-    InAppBrowser
+    InAppBrowser,
+    DatabaseService,
+    HTTP
   ],
   bootstrap: [AppComponent]
 })

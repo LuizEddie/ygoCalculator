@@ -14,81 +14,74 @@
     </ion-grid>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(7)">7</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(7)">7</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(8)">8</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(8)">8</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(9)">9</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(9)">9</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('+')">+</ion-button>
+        <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('+')">+</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(4)">4</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(4)">4</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(5)">5</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(5)">5</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(6)">6</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(6)">6</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('-')">-</ion-button>
+        <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('-')">-</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(1)">1</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(1)">1</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(2)">2</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(2)">2</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(3)">3</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao(3)">3</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('*')">*</ion-button>
+        <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('*')">*</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('0')">0</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao('0')">0</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('00')">00</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao('00')">00</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('000')">000</ion-button>
+        <ion-button expand="full" size="large" color={{numberButtonColor}} (click)="apertarBotao('000')">000</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('/')">/</ion-button>
+        <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('/')">/</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('/2')">/2</ion-button>
+        <ion-button expand="full" size="large" color={{optionButtonColor}} (click)="rebobinar()">MEM</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('*2')">*2</ion-button>
+        <ion-button expand="full" size="large" color={{optionButtonColor}} (click)="apagar('C')">C</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao('(')">(</ion-button>
+        <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('*2')">*2</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apertarBotao(')')">)</ion-button>
+        <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('/2')">/2</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="rebobinar()">MEM</ion-button>
+        <ion-button expand="full" size="large" color={{optionButtonColor}} (click)="apagar('DEL')">DEL</ion-button>
       </ion-col>
-      <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apagar('C')">C</ion-button>
-      </ion-col>
-      <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="apagar('DEL')">DEL</ion-button>
-      </ion-col>
-      <ion-col size="3">
-        <ion-button expand="full" size="large" (click)="realizarOperacao()">=</ion-button>
+      <ion-col size="9">
+        <ion-button expand="full" size="large" color="success" (click)="realizarOperacao()">=</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

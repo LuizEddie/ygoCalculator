@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>card-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let card of cardDetail | async; let i = index">
+    <ion-img src={{card.card_images[i].image_url}}></ion-img>
+  </ion-list>
+    
+
+</ion-content>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
+import { DatabaseService } from '../provider/ygo/database.service';
+import { Observable } from 'rxjs';
+import { Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-banlist',
@@ -8,22 +12,35 @@ import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/
 })
 
 export class BanlistPage implements OnInit {
-  options: InAppBrowserOptions ={
-    location: 'no',
-    clearcache: 'yes',
-    clearsessioncache: 'yes',
-    zoom: 'yes',
-    hardwareback: 'yes',
-    shouldPauseOnSuspend: 'no'
-  };
-  constructor(private iab: InAppBrowser) { 
-    this.renderBrowser();
+  private banlist: any;
+  constructor(private database: DatabaseService, private router: Router) { 
+    //this.banlist = this.getAllBanData();
+  }
+/*
+  getAllBanData(){
+   return this.database.getAllBanData();
   }
 
-  renderBrowser(){
-    this.iab.create('https://www.yugioh-card.com/en/limited/', "_self", this.options);    
+  getSpecificCard(card){
+    return this.database.getSpecificCard(card);
   }
   
+  searchBanCard(event){
+    const searchTerm = event.srcElement.value;
+    if(searchTerm === ""){
+      this.banlist = this.getAllBanData();
+    }else{
+      this.banlist = this.getSpecificCard(searchTerm);
+    }
+  }
+
+  goToDetails(id){
+    console.log(id);
+    this.router.navigate(['/card-detail/'+id]);
+  }
+  
+*/
+
   ngOnInit() {
   }
 

@@ -5,6 +5,29 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="renderBrowser()">Abrir banlist</ion-button>
-  <p>Abc</p>
+  <ion-searchbar (ionInput)="searchBanCard($event)" placeholder="Digite o nome do card"></ion-searchbar>
+  <ion-row>
+    <ion-col size="6">
+      <h2>Nome</h2>
+    </ion-col>
+    <ion-col size="3">
+      <h2>Status</h2>
+    </ion-col>
+  </ion-row>
+  <ion-list *ngFor='let card of banlist | async'>
+    <ion-item button (click)="goToDetails(card.name)">
+    <ion-grid>
+      
+    <ion-row>
+      <ion-col size="6">
+        <h2>{{card.name}}</h2>
+      </ion-col>
+      <ion-col size="3">
+        <h4>{{card.banlist_info.ban_tcg}}</h4>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-item>
+  </ion-list>
 </ion-content>

@@ -50,7 +50,6 @@ export class HomePage {
   }
 
   openBanlist(){
-
     this.router.navigate(['/banlist'])
   }
 

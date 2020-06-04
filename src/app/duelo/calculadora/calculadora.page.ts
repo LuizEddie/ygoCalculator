@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController, NavController, NavParams } from '@ionic/angular';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
+
 @Component({
   selector: 'app-calculadora',
   templateUrl: './calculadora.page.html',
@@ -14,6 +15,10 @@ export class CalculadoraPage implements OnInit {
   private pontosMemoria = "";
   private orientacao;
   private jogador;
+//Definir cor dos botoes
+  private numberButtonColor = "dark";
+  private operationButtonColor = "danger";
+  private optionsButtonColor = "warning";
   constructor(private alertController: AlertController, private modalController: ModalController, 
     private screen: ScreenOrientation, private navParams: NavParams) {
       this.lifePoints = this.navParams.get('lifePoints');
@@ -32,6 +37,9 @@ export class CalculadoraPage implements OnInit {
         
           this.pontosMemoria = this.lifePoints;
           this.lifePoints = eval(this.lifePoints + this.pontosAlterados);
+          if(Number(this.lifePoints)<0){
+            this.lifePoints = "0";
+          }
           this.pontosAlterados = "";
         
         this.fecharModal();
