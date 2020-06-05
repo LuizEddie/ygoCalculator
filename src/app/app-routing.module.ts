@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'classico', loadChildren: './duelo/classico/classico.module#ClassicoPageModule' },
   { path: 'calculadora', loadChildren: './duelo/calculadora/calculadora.module#CalculadoraPageModule' },
   { path: 'banlist', loadChildren: './banlist/banlist.module#BanlistPageModule' },
-  { path: 'card-detail/:id', loadChildren: './card-detail/card-detail.module#CardDetailPageModule'},
+  { path: 'card-detail/:name', loadChildren: './card-detail/card-detail.module#CardDetailPageModule'},
 ];
 
 @NgModule({

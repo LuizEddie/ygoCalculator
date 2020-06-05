@@ -1,12 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>card-detail</ion-title>
+    <ion-row>
+      <ion-col size="3">
+        <ion-icon name="arrow-back" (click)="backToPage()" class="icon-back"></ion-icon>
+      </ion-col>
+      <ion-col size="9">
+        <h3>{{name}}</h3>
+      </ion-col>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let card of cardDetail | async; let i = index">
-    <ion-img src={{card.card_images[i].image_url}}></ion-img>
+  <ion-list *ngFor="let card of cardDetail | async">
+    <ion-img src={{card.card_images[0].image_url}}></ion-img>
   </ion-list>
     
 

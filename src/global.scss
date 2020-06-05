@@ -24,3 +24,11 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.icon-back{
+    font-size: 50px !important;
+  }
+
+  ion-button{
+      --background: #000000 !important;
+  }

@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ErrorHandler } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HTTP } from '@ionic-native/http/ngx';
+import { AlertController } from '@ionic/angular';
 
 
 
@@ -9,12 +10,12 @@ import { HTTP } from '@ionic-native/http/ngx';
 })
 export class DatabaseService {
 
-  constructor(private http: HTTP) { }
+  constructor(private http: HTTP, private alertController: AlertController) { }
 
 async getAllBanData(){
   var banlist;
  await this.http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?banlist=tcg',{},{}).then(resposta=>{
-    alert("Banco de dados carregado");
+    this.alertView("Banco de dados carregado");
     resposta.data = JSON.parse(resposta.data);
     banlist = resposta.data.data;
     console.log(banlist);
@@ -23,25 +24,29 @@ async getAllBanData(){
   })
   return banlist;
 }
-/*
-async getSpecificBanCard(card){
-  var carta;
-  await this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?banlist=tcg&fname=" + card + "",{},{}).then(resposta=>{
-    resposta.data = JSON.parse(resposta.data);
-    carta = resposta.data.data;
-    console.log(carta);
-  }).catch(err =>{
-    console.log(err.error);
-  })
-  return carta;
-}
-*/
+
 async getAllCards(){
 
 }
-async getSpecificCard(card){
 
+async getSpecificCard(card){
+  let foundCard;
+  await this.http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name='+card+"",{},{}).then(response=>{
+    response.data = JSON.parse(response.data);
+    foundCard = response.data.data;
+  }).catch(err=>{
+    console.log(err.error);
+  })
+  return foundCard;
 }
 
+async alertView(message){
+  const alert = await this.alertController.create({
+    message: message
+  });
+  alert.buttons =["OK"]
+
+  alert.present();
+}
 
 }

@@ -3,9 +3,7 @@
     <ion-grid>
       <ion-row>
         <ion-col size="3">
-          <ion-button (click)="fecharModal()" expand="block" size="large">
-            Voltar
-          </ion-button>
+            <ion-icon class="icon-back" name="arrow-back" (click)="fecharModal()"></ion-icon>
         </ion-col>
         <ion-col size="9" class="ion-text-center">
           <h1>{{lifePoints}} {{pontosAlterados}}</h1>
@@ -66,10 +64,10 @@
         <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('/')">/</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" color={{optionButtonColor}} (click)="rebobinar()">MEM</ion-button>
+        <ion-button expand="full" size="large" color={{optionsButtonColor}} (click)="rebobinar()">MEM</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" color={{optionButtonColor}} (click)="apagar('C')">C</ion-button>
+        <ion-button expand="full" size="large" color={{optionsButtonColor}} (click)="apagar('C')">C</ion-button>
       </ion-col>
       <ion-col size="3">
         <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('*2')">*2</ion-button>
@@ -78,7 +76,7 @@
         <ion-button expand="full" size="large" color={{operationButtonColor}} (click)="apertarBotao('/2')">/2</ion-button>
       </ion-col>
       <ion-col size="3">
-        <ion-button expand="full" size="large" color={{optionButtonColor}} (click)="apagar('DEL')">DEL</ion-button>
+        <ion-button expand="full" size="large" color={{optionsButtonColor}} (click)="apagar('DEL')">DEL</ion-button>
       </ion-col>
       <ion-col size="9">
         <ion-button expand="full" size="large" color="success" (click)="realizarOperacao()">=</ion-button>
