@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CalculadoraPage } from '../calculadora/calculadora.page';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
 interface Jogador{
   jogador: String,
@@ -19,12 +20,12 @@ interface Jogador{
 
 export class FieldCenterPage implements OnInit {
 
-  private jogador1;
-  private jogador2;
-  private tipoDuelo = "";
+  jogador1;
+  jogador2;
+  tipoDuelo = "";
 
   constructor(private router: Router, private modalController: ModalController, 
-    private screen: ScreenOrientation) {
+    private screen: ScreenOrientation, private speech: SpeechRecognition, private zone: NgZone) {
     this.getTipoDuelo();
    }
 
@@ -66,7 +67,7 @@ export class FieldCenterPage implements OnInit {
     }else if(jogador === 'j2'){
       lifePoints = this.jogador2.pontosDeVida;
       orientacaoTela = this.jogador2.orientacao;
-      pontosMemoria = this.jogador1.pontosMemoria;
+      pontosMemoria = this.jogador2.pontosMemoria;
     }
     const modal = await this.modalController.create({
       component: CalculadoraPage,
@@ -92,4 +93,28 @@ export class FieldCenterPage implements OnInit {
     this.screen.lock(this.screen.ORIENTATIONS.PORTRAIT_PRIMARY);
   }
 
+  async listening(jogador, pontosDeVida){
+    this.requestPermission();
+    await this.speech.startListening().subscribe((matches: string[])=>{
+      if(jogador === 'Jogador 1'){
+        this.jogador1.pontosMemoria = pontosDeVida;
+        this.jogador1.pontosDeVida = eval(matches[0]);      
+      }else{
+        this.jogador2.pontosMemoria = pontosDeVida;
+        this.jogador2.pontosDeVida = eval(matches[0]);
+      }
+
+      this.zone.run(()=>{
+        console.log('recarregado');
+      })
+    },
+    (error)=>{
+      console.log(error)
+    });
+    
+  }
+
+  requestPermission(){
+    this.speech.requestPermission().then(()=>{console.log("Permitido")});
+  }
 }

@@ -1,4 +1,9 @@
 <ion-content class="vertical-align-content">
+    <ion-fab vertical="center" horizontal="center" slot="fixed">
+        <ion-fab-button>
+            Menu
+        </ion-fab-button>
+    </ion-fab>
     <ion-grid class="parametros">
         <ion-row class="parent-row">
             <ion-col size="12">
@@ -6,12 +11,22 @@
                     <h2 class="fontJogador textOrientation">{{jogador2.jogador}}</h2>
                     <h1 class="textFormat  textOrientation">{{jogador2.pontosDeVida}}</h1>
                 </div>
+                <ion-fab vertical="top" horizontal="start">
+                    <ion-fab-button class="textOrientation" (click)="listening('Jogador 2', jogador2.pontosDeVida)">
+                        Voz J2
+                    </ion-fab-button>
+                </ion-fab>
             </ion-col>
             <ion-col size="12">
                 <div class="ion-text-center" (click)="callCalculadora('j1')">
                     <h1 class="textFormat">{{jogador1.pontosDeVida}}</h1>
-                    <h2 class="fontJogador"> {{jogador1.jogador}}</h2>
+                    <h2 class="fontJogador">{{jogador1.jogador}}</h2>
                 </div>
+                <ion-fab vertical="bottom" horizontal="end">
+                    <ion-fab-button (click)="listening('Jogador 1', jogador1.pontosDeVida)">
+                        Voz J1
+                    </ion-fab-button>
+                </ion-fab>
             </ion-col>
         </ion-row>
     </ion-grid>

@@ -13,7 +13,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { DatabaseService } from 'src/app/provider/ygo/database.service';
 import { HTTP } from '@ionic-native/http/ngx'; 
-
+import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
 @NgModule({
   declarations: [AppComponent, CalculadoraPage],
   entryComponents: [CalculadoraPage],
@@ -25,7 +25,8 @@ import { HTTP } from '@ionic-native/http/ngx';
     ScreenOrientation,
     InAppBrowser,
     DatabaseService,
-    HTTP
+    HTTP,
+    SpeechRecognition
   ],
   bootstrap: [AppComponent]
 })

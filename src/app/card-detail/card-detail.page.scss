@@ -1,0 +1,19 @@
+.description{
+    border-width: .01em;
+    border-style: solid;
+    background-color: #ffffff;
+}
+
+.title{
+    font-weight: bold;
+    background-color: gainsboro;
+}
+
+.XYZ{
+    --ion-background-color: black;
+    color: black !important;
+}
+
+.whiteBackground{
+    --ion-background-color: #ffffff;
+}

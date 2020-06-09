@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class DueloPage implements OnInit {
 
-  private layout;
+  layout;
   constructor(private router: Router) { 
     this.getLayoutDuelo();
   }
@@ -23,5 +22,6 @@ export class DueloPage implements OnInit {
       this.layout = getNav.extras.state.layout;
     }
   }
+
 
 }

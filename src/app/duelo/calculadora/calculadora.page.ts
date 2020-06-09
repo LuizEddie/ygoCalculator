@@ -10,15 +10,15 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 })
 export class CalculadoraPage implements OnInit {
 
-  private lifePoints = "";
-  private pontosAlterados = "";
-  private pontosMemoria = "";
-  private orientacao;
-  private jogador;
+   lifePoints = "";
+   pontosAlterados = "";
+   pontosMemoria = "";
+   orientacao;
+   jogador;
 //Definir cor dos botoes
-  private numberButtonColor = "dark";
-  private operationButtonColor = "danger";
-  private optionsButtonColor = "warning";
+   numberButtonColor = "dark";
+   operationButtonColor = "danger";
+   optionsButtonColor = "warning";
   constructor(private alertController: AlertController, private modalController: ModalController, 
     private screen: ScreenOrientation, private navParams: NavParams) {
       this.lifePoints = this.navParams.get('lifePoints');

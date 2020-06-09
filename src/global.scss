@@ -32,3 +32,64 @@
   ion-button{
       --background: #000000 !important;
   }
+
+  .Spell{
+    --ion-background-color: green;  
+}
+
+.Trap{
+    --ion-background-color: fuchsia;
+}
+
+.Fusion{
+    --ion-background-color: purple;
+}
+
+.Effect{
+    --ion-background-color: brown;
+}
+
+.Tuner{
+    --ion-background-color: brown;
+}
+
+.Normal{
+    --ion-background-color: yellow;
+}
+
+.XYZ{
+    --ion-background-color: black;
+    color: white;
+}
+
+.Synchro{
+    --ion-background-color: silver;
+}
+
+.Link{
+    --ion-background-color: blue;
+}
+
+.Ritual{
+    --ion-background-color: skyblue;
+}
+
+.Banned{
+    background-color: #ff0000 !important;
+}
+
+.Limited{
+    background-color: #ffff00 !important;
+}
+
+.Semi-Limited{
+    background-color: #adff2f !important;
+}
+
+.Spirit{
+    --ion-background-color: brown;
+}
+
+.Gemini{
+    --ion-background-color: brown;
+}

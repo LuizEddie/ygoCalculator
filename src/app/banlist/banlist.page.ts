@@ -17,14 +17,14 @@ interface BanlistCard{
 })
 
 export class BanlistPage implements OnInit {
-  private banlist: any;
-  private searchCard: Array<BanlistCard> = [];
-  private allList:Array<BanlistCard> = [];
-  private limited:Array<BanlistCard> = [];
-  private semi:Array<BanlistCard> = [];
-  private banned:Array<BanlistCard> = [];
-  private options = [{name: "Todas", checked: true}, {name: "Banidas", checked: false}, {name: "Limitadas", checked: false}, {name: "Semi-Limitadas", checked: false}];
-  private selected;
+   banlist: any;
+   searchCard: Array<BanlistCard> = [];
+   allList:Array<BanlistCard> = [];
+   limited:Array<BanlistCard> = [];
+   semi:Array<BanlistCard> = [];
+   banned:Array<BanlistCard> = [];
+   options = [{name: "Todas", checked: true}, {name: "Banidas", checked: false}, {name: "Limitadas", checked: false}, {name: "Semi-Limitadas", checked: false}];
+   isSearch = false;
   constructor(private database: DatabaseService, private router: Router) { 
     this.banlist = this.getAllBanData();
     this.organizeCards();
@@ -46,12 +46,12 @@ export class BanlistPage implements OnInit {
       for(let option of this.options){
           option.checked = false;
         }
-      this.selected = "Pesquisa";
+      this.isSearch = true;
       this.searchCard = this.allList.filter((item: BanlistCard)=>{
         return (item.cardName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
       })
     }else{
-      this.selected = "";
+      this.isSearch = false;
       this.options[0].checked = true;
     }
     
@@ -80,6 +80,10 @@ export class BanlistPage implements OnInit {
       cardType = string;
     }else if(string.indexOf("Tuner") !== -1){
       cardType = string;
+    }else if(string.indexOf("Spirit") !== -1){
+      cardType = string;
+    }else if(string.indexOf("Gemini") !== -1){
+      cardType = string;
     }
 
     return cardType;
@@ -101,10 +105,11 @@ export class BanlistPage implements OnInit {
     })
   }
 
-  goToDetails(name){
+  goToDetails(name, type){
     let navigationExtras: NavigationExtras={
       state:{
-        page: "banlist"
+        page: "banlist",
+        type: type
       }
     }
     this.router.navigate(['/card-detail/'+name], navigationExtras);

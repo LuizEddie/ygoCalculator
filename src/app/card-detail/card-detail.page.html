@@ -12,9 +12,108 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let card of cardDetail | async">
-    <ion-img src={{card.card_images[0].image_url}}></ion-img>
+  <ion-list *ngFor="let card of cardDetail | async" class="{{cardType}}">
+    <ion-row>
+      <ion-col>
+        <ion-img src={{card.card_images[0].image_url}}></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4" class="description title">Nome</ion-col>
+        <ion-col class="description">{{card.name}}</ion-col>
+      </ion-row>
+      <ion-row *ngIf="card.type != 'Spell Card' && card.type != 'Trap Card'">
+        <ion-col size="4" class="description  title">Atributo</ion-col>
+        <ion-col class="description">{{card.attribute}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="description title">Tipos</ion-col>
+        <ion-col class="description">{{card.race}} {{card.type}}</ion-col>
+      </ion-row>
+      <div *ngIf="cardType.indexOf('Link') !== -1">
+      <ion-row>
+        <ion-col size="4" class="description title">Setas Link</ion-col>
+        <ion-col class="description"><ion-col *ngFor="let linkmarker of card.linkmarkers" size="2">{{linkmarker}}</ion-col></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="description title">Valor Link</ion-col>
+        <ion-col class="description">{{card.linkval}}</ion-col>
+      </ion-row>
+      </div>
+      <ion-row *ngIf="card.type != 'Spell Card' && card.type != 'Trap Card' && card.type.indexOf('Link') === -1">
+        <ion-col *ngIf="card.type.indexOf('XYZ') === -1" size="4" class="description title">Nível</ion-col>
+        <ion-col *ngIf="card.type.indexOf('XYZ') !== -1" size="4" class="description title">Rank</ion-col>
+        <ion-col class="description">{{card.level}}</ion-col>
+      </ion-row>
+      <ion-row *ngIf="cardType.indexOf('Pendulum') !== -1">
+        <ion-col size="4" class="description title">Escala</ion-col>
+        <ion-col class="description">{{card.scale}}</ion-col>
+      </ion-row>
+      <ion-row *ngIf="card.type != 'Spell Card' && card.type != 'Trap Card'">
+        <ion-col size="4" class="description  title">ATK / DEF</ion-col>
+        <ion-col class="description">{{card.atk}} / {{card.def}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="description  title">ID</ion-col>
+        <ion-col class="description">{{card.id}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="description  title">Status Banlist</ion-col>
+        <ion-col class="{{card.banlist_info.ban_tcg}} description">{{card.banlist_info.ban_tcg}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="description title">
+          Descrição ou Efeito
+        </ion-col>
+        <ion-col class="description">
+          {{card.desc}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item button (click)="showPrices()" class="whiteBackground">
+      <h5>{{priceTitle}}</h5>
+    </ion-item>
+    <div *ngIf="showPrice">
+      <ion-row>
+        <ion-col class="description title">
+          *OBS: Os preços estão em dólar(U$).
+        </ion-col>
+      </ion-row>
+      <ion-list *ngFor = "let cardSet of card.card_sets">
+        <ion-item button (click)="showSetDetails(cardSet.set_code, cardSet.set_rarity)" class="whiteBackground">
+          {{cardSet.set_code}} - {{cardSet.set_rarity}}
+        </ion-item>
+        <div *ngIf="showSetDetail && cardSet.set_code === card_Set.setId && cardSet.set_rarity === card_Set.setRarity">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4" class="description title">
+                Set
+              </ion-col>
+              <ion-col class="description">
+                {{cardSet.set_name}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="4" class="description title">
+                Raridade
+              </ion-col>
+              <ion-col class="description">
+                {{cardSet.set_rarity}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="4" class="description title">
+                Preço
+              </ion-col>
+              <ion-col class="description">
+                U$ {{cardSet.set_price}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-list>
+    </div>
   </ion-list>
-    
 
 </ion-content>

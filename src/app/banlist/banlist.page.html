@@ -14,7 +14,7 @@
 <ion-content>
   <ion-searchbar (ionInput)="searchBanCard($event)" placeholder="Digite o nome do card"></ion-searchbar>
 
-  <div *ngIf="selected != 'Pesquisa'">
+  <div *ngIf="!isSearch">
     <ion-row>
       <ion-col size="6" *ngFor = "let option of options">
         <ion-checkbox [(ngModel)]="option.checked"></ion-checkbox>
@@ -35,9 +35,9 @@
     </ion-col>
   </ion-row>
 
-  <div *ngIf="selected === 'Pesquisa'">
+  <div *ngIf="isSearch">
     <ion-list *ngFor='let card of searchCard'>
-      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName)">
+      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName, card.cardType)">
           <ion-row>
             <ion-col size="4">
               <img src={{card.imgPath}}>
@@ -55,7 +55,7 @@
 
   <div *ngIf="options[1].checked === true || options[0].checked === true">
     <ion-list  *ngFor='let card of banned'>
-      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName)">
+      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName, card.cardType)">
           <ion-row>
             <ion-col size="4">
               <img src={{card.imgPath}}>
@@ -73,7 +73,7 @@
 
   <div *ngIf="options[2].checked === true || options[0].checked === true">
     <ion-list  *ngFor='let card of limited'>
-      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName)">
+      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName, card.cardType)">
           <ion-row>
             <ion-col size="4">
               <img src={{card.imgPath}}>
@@ -91,7 +91,7 @@
   
   <div *ngIf="options[3].checked === true || options[0].checked === true">
     <ion-list  *ngFor='let card of semi'>
-      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName)">
+      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName, card.cardType)">
           <ion-row>
             <ion-col size="4" >
               <img src={{card.imgPath}}>
