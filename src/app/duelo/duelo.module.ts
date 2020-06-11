@@ -10,6 +10,7 @@ import { ClassicoPage } from './classico/classico.page';
 import { FieldCenterPage } from './field-center/field-center.page';
 import { CalculadoraPage } from './calculadora/calculadora.page';
 
+import { SharedModule } from '../shared/shared.module';
 const routes: Routes = [
   {
     path: '',
@@ -22,8 +23,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  declarations: [DueloPage, FieldCenterPage]
+  declarations: [DueloPage]
 })
 export class DueloPageModule {}

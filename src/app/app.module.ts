@@ -8,15 +8,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { CalculadoraPage } from './duelo/calculadora/calculadora.page';
 import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { DatabaseService } from 'src/app/provider/ygo/database.service';
 import { HTTP } from '@ionic-native/http/ngx'; 
-import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
+import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
+import { SharedModule } from './shared/shared.module';
+import { Network } from '@ionic-native/network/ngx';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
+import { AdMob } from '@ionic-native/admob-plus/ngx'; 
+
 @NgModule({
-  declarations: [AppComponent, CalculadoraPage],
-  entryComponents: [CalculadoraPage],
+  declarations: [AppComponent],
+  
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
     StatusBar,
@@ -26,7 +30,11 @@ import {SpeechRecognition} from '@ionic-native/speech-recognition/ngx';
     InAppBrowser,
     DatabaseService,
     HTTP,
-    SpeechRecognition
+    SpeechRecognition,
+    SharedModule,
+    Network,
+    Insomnia,
+    AdMob
   ],
   bootstrap: [AppComponent]
 })

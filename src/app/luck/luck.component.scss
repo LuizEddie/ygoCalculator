@@ -1,0 +1,19 @@
+ion-img{
+    width: 250px;
+    height: 250px;
+}
+
+.position{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+}
+
+ion-content{
+    --background: black !important;
+}
+
+ion-toolbar{
+    --background: gray !important;
+}

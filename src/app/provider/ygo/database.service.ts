@@ -26,7 +26,15 @@ async getAllBanData(){
 }
 
 async getAllCards(){
-
+  var cards;
+  await this.http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {}, {}).then(response=>{
+    this.alertView("Banco de dados carregado");
+    response.data = JSON.parse(response.data);
+    cards = response.data
+  }).catch(err=>{
+    console.log(err.error);
+  })
+  return cards;
 }
 
 async getSpecificCard(card){

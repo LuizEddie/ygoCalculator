@@ -8,8 +8,10 @@ import { AlertController, NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor(private alertController: AlertController, private router: Router) {}
+  year: any;
+  constructor(private alertController: AlertController, private router: Router) {
+    this.year = this.getYear();
+  }
 
   async tipoDuelo(){
    const alert = await this.alertController.create();
@@ -38,19 +40,30 @@ export class HomePage {
        }
        this.router.navigate(['/duelo'], navigationExtras);
     }
-   }/*,{
-     text: "Personalizado",
-     handler: ()=>{
-       
-    }
-   }*/]
-  
+   }]
    alert.present();
-
   }
 
   openBanlist(){
     this.router.navigate(['/banlist'])
+  }
+
+  openCardList(){
+
+
+  }
+
+  getYear(){
+    var data = new Date();
+    return data.getFullYear();
+  }
+
+  checkConnection(){
+
+  }
+
+  getAD(){
+    
   }
 
 }

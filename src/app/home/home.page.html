@@ -1,14 +1,22 @@
 <ion-content>
   <ion-grid class="center-grid">
     <ion-row class="parent-row">
-      <ion-col size="6">
-        <ion-button (click)="tipoDuelo()" expand="block">Duelo</ion-button>
-        <ion-button expand="block">Pesquisa</ion-button>
+      <ion-col size="12">
+        <ion-button (click)="tipoDuelo()" expand="block"><ion-icon name="calculator"></ion-icon>Duelo</ion-button>
       </ion-col>
+    </ion-row>
+      <ion-row class="parent-row">
       <ion-col size="6">
-        <ion-button expand="block" (click)="openBanlist()">Banlist</ion-button>  
-        <ion-button expand="block">Opções</ion-button>
+        <ion-button expand="block" (click)="openBanlist()"><ion-icon name="warning"></ion-icon>Banlist</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block"><ion-icon name="briefcase"></ion-icon>Cards</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    Versão: 1.0 - Desenvolvido por: Luiz Eduardo da Silva Magalhães - YU-GI-OH Copyright© 1997 - {{year}} Kazuki Takahashi/Konami Corp.
+  </ion-toolbar>
+</ion-footer>

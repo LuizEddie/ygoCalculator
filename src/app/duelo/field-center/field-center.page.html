@@ -1,8 +1,15 @@
 <ion-content class="vertical-align-content">
     <ion-fab vertical="center" horizontal="center" slot="fixed">
-        <ion-fab-button>
-            Menu
-        </ion-fab-button>
+        <ion-fab-button><ion-icon name="menu"></ion-icon></ion-fab-button>
+        <ion-fab-list side="top">
+            <ion-fab-button (click)="setDuel(tipoDuelo)"><ion-icon name="refresh"></ion-icon></ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="start">
+            <ion-fab-button (click)="backToHome()"><ion-icon name="home"></ion-icon></ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="end">
+            <ion-fab-button (click)="chooseLuckAlert()"><ion-icon name="radio-button-off"></ion-icon></ion-fab-button>
+        </ion-fab-list>
     </ion-fab>
     <ion-grid class="parametros">
         <ion-row class="parent-row">
@@ -13,7 +20,7 @@
                 </div>
                 <ion-fab vertical="top" horizontal="start">
                     <ion-fab-button class="textOrientation" (click)="listening('Jogador 2', jogador2.pontosDeVida)">
-                        Voz J2
+                        <ion-icon name="mic"></ion-icon>J2
                     </ion-fab-button>
                 </ion-fab>
             </ion-col>
@@ -24,7 +31,7 @@
                 </div>
                 <ion-fab vertical="bottom" horizontal="end">
                     <ion-fab-button (click)="listening('Jogador 1', jogador1.pontosDeVida)">
-                        Voz J1
+                        <ion-icon name="mic"></ion-icon>J1
                     </ion-fab-button>
                 </ion-fab>
             </ion-col>

@@ -1,0 +1,18 @@
+<ion-content>
+    {{abc}}
+    <div class="position">
+        <ion-img src="../../assets/img/{{result}}.png"></ion-img>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="full" (click)="closeModal()"><ion-icon name="arrow-back"></ion-icon>Voltar</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="full" (click)="toss(option)"><ion-icon name="refresh"></ion-icon>Repetir</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CalculadoraPage } from './calculadora.page';
 
+import { SharedModule } from '../../shared/shared.module';
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SharedModule
   ],
-  declarations: [CalculadoraPage]
+  declarations: []
 })
 export class CalculadoraPageModule {}

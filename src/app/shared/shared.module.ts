@@ -2,13 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CalculadoraPage } from '../duelo/calculadora/calculadora.page';
 import { FieldCenterPage } from '../duelo/field-center/field-center.page';
-
+import { IonicModule } from '@ionic/angular';
+import { LuckComponent } from '../luck/luck.component';
 
 
 @NgModule({
-  declarations: [CalculadoraPage, FieldCenterPage],
+  declarations: [CalculadoraPage, FieldCenterPage, LuckComponent],
+  entryComponents:[CalculadoraPage, LuckComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    IonicModule
   ],
   exports:[
     CalculadoraPage,

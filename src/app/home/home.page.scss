@@ -4,7 +4,7 @@ ion-grid.center-grid {
         left: 50%;
         transform: translate(-50%, -50%) !important;
         display: block !important;
-        width: 100%;
+        width: 85%;
         height: 50%;
 }
 
@@ -17,4 +17,12 @@ ion-row.parent-row{
 ion-button{
     height: 100%;
     font-size: 150%
+}
+
+ion-content{
+    --background: grey !important;
+}
+
+ion-toolbar{
+    --background: black !important;
 }
