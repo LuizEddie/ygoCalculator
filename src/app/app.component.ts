@@ -18,7 +18,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
-    //this.initializeApp();
+    this.initializeApp();
     AdMob.initialize("ca-app-pub-6210301466309831~3614300703");
 
   }

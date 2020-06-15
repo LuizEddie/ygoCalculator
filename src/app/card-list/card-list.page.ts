@@ -3,7 +3,6 @@ import { Router, NavigationExtras } from '@angular/router';
 import { Plugins } from '@capacitor/core';
 import { DatabaseService, CardData } from '../provider/ygo/database.service';
 import { AlertController } from '@ionic/angular';
-import { SpeechRecognition } from '@ionic-native/speech-recognition';
 
 const { AdMob } = Plugins;
 
@@ -47,7 +46,7 @@ export class CardListPage implements OnInit {
   sortOptions = [{name:"Ascendente", isChecked: true, value: "asc"}, {name: "Descendente", isChecked: false, value: "desc"}];
   selectedSortValue = "asc";
   selectedFilterValue = "";
-  constructor(private router: Router, private database: DatabaseService, private alertController: AlertController, private speech: SpeechRecognition) { 
+  constructor(private router: Router, private database: DatabaseService, private alertController: AlertController) { 
     this.getAllCards(0, this.selectedSortValue, this.selectedFilterValue);
   }
 

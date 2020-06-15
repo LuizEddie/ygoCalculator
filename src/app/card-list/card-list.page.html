@@ -20,7 +20,7 @@
         <ion-col size="12">
           <ion-radio-group>
             <ion-item button (click)="sortCards(option.value)" *ngFor="let option of sortOptions" class="sort">
-              <ion-label>{{option.name}} {{check}}</ion-label>
+              <ion-label>{{option.name}}</ion-label>
               <ion-radio slot="start" value="{{option.value}}" checked={{option.isChecked}}></ion-radio>
             </ion-item>
           </ion-radio-group>
