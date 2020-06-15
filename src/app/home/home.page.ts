@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, NavController } from '@ionic/angular';
+import { Network} from '@ionic-native/network/ngx';
+import { Plugins } from '@capacitor/core';
+import { AdOptions, AdSize, AdPosition} from 'capacitor-admob';
+
+const { AdMob } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -9,8 +14,14 @@ import { AlertController, NavController } from '@ionic/angular';
 })
 export class HomePage {
   year: any;
-  constructor(private alertController: AlertController, private router: Router) {
+  constructor(private alertController: AlertController, private router: Router, private network: Network) {
     this.year = this.getYear();
+  }
+
+  ngOnInit(){
+    this.showBottomBanner();
+    //this.showTopBanner();
+
   }
 
   async tipoDuelo(){
@@ -28,6 +39,7 @@ export class HomePage {
         }
       }
       this.router.navigate(['/duelo'], navigationExtras);
+      this.hideBanner();
      }
    },{
      text: "Speed",
@@ -39,17 +51,22 @@ export class HomePage {
          }
        }
        this.router.navigate(['/duelo'], navigationExtras);
+       this.hideBanner();
     }
    }]
    alert.present();
   }
 
   openBanlist(){
-    this.router.navigate(['/banlist'])
+    let connection = this.checkConnection();
+
+    connection === "Conectado" ? this.router.navigate(['/banlist']) && this.hideBanner() : alert("Necessário internet para usar essa função!");
   }
 
   openCardList(){
+    let connection = this.checkConnection();
 
+    connection === "Conectado" ? this.router.navigate(['/card-list']) && this.hideBanner() : alert("Necessário internet para usar essa função!");
 
   }
 
@@ -59,12 +76,46 @@ export class HomePage {
   }
 
   checkConnection(){
+    let netState = this.network.type;
 
+    let con = netState !== 'none' ? "Conectado" : "Desconectado";
+    
+    return con;
   }
 
-  getAD(){
-    
+  async showBottomBanner(){
+    let options: AdOptions = {
+      adId: "ca-app-pub-3940256099942544/6300978111",
+      adSize: AdSize.SMART_BANNER,
+      position: AdPosition.BOTTOM_CENTER,
+      hasTabBar: true
+    } 
+
+    await AdMob.showBanner(options).then(value=>{
+      console.log(value);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  async showTopBanner(){
+    let options: AdOptions = {
+      adId: "ca-app-pub-3940256099942544/6300978111",
+      adSize: AdSize.SMART_BANNER,
+      position: AdPosition.TOP_CENTER,
+    }
+      await AdMob.showBanner(options).then((value)=>{
+        console.log(value);
+      }, error=>{
+        console.log(error);
+      })
+  }
+
+  hideBanner(){
+    AdMob.hideBanner();
   }
 
 }
+
+
 

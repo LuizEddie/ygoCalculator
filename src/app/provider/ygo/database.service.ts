@@ -3,7 +3,10 @@ import { Observable } from 'rxjs';
 import { HTTP } from '@ionic-native/http/ngx';
 import { AlertController } from '@ionic/angular';
 
-
+export interface CardData{
+  cards: any,
+  meta: any
+}
 
 @Injectable({
   providedIn: 'root'
@@ -25,21 +28,34 @@ async getAllBanData(){
   return banlist;
 }
 
-async getAllCards(){
-  var cards;
-  await this.http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php', {}, {}).then(response=>{
+async getAllCards(offset, order, filter){
+  var cardsData: CardData;
+  await this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset="+offset+"&misc=yes&sort=name&sortorder="+order+filter, {}, {}).then(response=>{
     this.alertView("Banco de dados carregado");
     response.data = JSON.parse(response.data);
-    cards = response.data
+    cardsData = {cards: response.data.data, meta: response.data.meta};
+    console.log(cardsData.cards);
   }).catch(err=>{
     console.log(err.error);
   })
-  return cards;
+  return cardsData;
 }
 
 async getSpecificCard(card){
+  let foundCard: CardData;
+  await this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?fname="+card+"&misc=yes&sort=name&sortorder=asc&num=5&offset=0",{},{}).then(response=>{
+    response.data = JSON.parse(response.data);
+    foundCard = {cards: response.data.data, meta: response.data.meta};
+    console.log(foundCard);
+  }).catch(err=>{
+    console.log(err.error);
+  })
+  return foundCard;
+}
+
+async getCardData(card){
   let foundCard;
-  await this.http.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?name='+card+"",{},{}).then(response=>{
+  await this.http.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?name="+card+"&misc=yes",{},{}).then(response=>{
     response.data = JSON.parse(response.data);
     foundCard = response.data.data;
   }).catch(err=>{

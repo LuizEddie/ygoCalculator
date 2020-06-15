@@ -33,8 +33,8 @@
       --background: #000000 !important;
   }
 
-  .Spell{
-    --ion-background-color: green;  
+.Spell{
+    --ion-background-color: green !important;  
 }
 
 .Trap{
@@ -91,5 +91,9 @@
 }
 
 .Gemini{
+    --ion-background-color: brown;
+}
+
+.Toon{
     --ion-background-color: brown;
 }

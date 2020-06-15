@@ -6,6 +6,12 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 
 import { LuckComponent } from '../../luck/luck.component';
+import { Insomnia } from '@ionic-native/insomnia/ngx';
+
+import{ Plugins } from '@capacitor/core';
+
+const{ AdMob }  = Plugins;
+
 
 interface Jogador{
   jogador: String,
@@ -27,11 +33,13 @@ export class FieldCenterPage implements OnInit {
   tipoDuelo = "";
 
   constructor(private router: Router, private modalController: ModalController, 
-    private screen: ScreenOrientation, private speech: SpeechRecognition, private zone: NgZone, private alertController: AlertController) {
+    private screen: ScreenOrientation, private speech: SpeechRecognition, private zone: NgZone, private alertController: AlertController, 
+    private insomnia: Insomnia) {
     this.getTipoDuelo();
    }
 
   ngOnInit() {
+    this.setScreenActive();
   }
 
   getTipoDuelo(){
@@ -138,6 +146,7 @@ export class FieldCenterPage implements OnInit {
 
   backToHome(){
     this.router.navigate(["/home"]);
+    this.resumeBanner();
   }
 
   setDuel(tipoDuelo){
@@ -186,6 +195,10 @@ export class FieldCenterPage implements OnInit {
   }
 
   setScreenActive(){
+    this.insomnia.keepAwake()
+  }
 
+  resumeBanner(){
+    AdMob.resumeBanner();
   }
 }

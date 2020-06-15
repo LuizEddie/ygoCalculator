@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let card of cardDetail | async" class="{{cardType}}">
+  <ion-list *ngFor="let card of cardDetail | async" class="{{card.type}}">
     <ion-row>
       <ion-col>
         <ion-img src={{card.card_images[0].image_url}}></ion-img>
@@ -31,7 +31,7 @@
         <ion-col size="4" class="description title">Tipos</ion-col>
         <ion-col class="description">{{card.race}} {{card.type}}</ion-col>
       </ion-row>
-      <div *ngIf="cardType.indexOf('Link') !== -1">
+      <div *ngIf="card.type.indexOf('Link') !== -1">
       <ion-row>
         <ion-col size="4" class="description title">Setas Link</ion-col>
         <ion-col class="description"><ion-col *ngFor="let linkmarker of card.linkmarkers" size="2">{{linkmarker}}</ion-col></ion-col>
@@ -46,7 +46,7 @@
         <ion-col *ngIf="card.type.indexOf('XYZ') !== -1" size="4" class="description title">Rank</ion-col>
         <ion-col class="description">{{card.level}}</ion-col>
       </ion-row>
-      <ion-row *ngIf="cardType.indexOf('Pendulum') !== -1">
+      <ion-row *ngIf="card.type.indexOf('Pendulum') !== -1">
         <ion-col size="4" class="description title">Escala</ion-col>
         <ion-col class="description">{{card.scale}}</ion-col>
       </ion-row>
@@ -59,8 +59,9 @@
         <ion-col class="description">{{card.id}}</ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="4" class="description  title">Status Banlist</ion-col>
-        <ion-col class="{{card.banlist_info.ban_tcg}} description">{{card.banlist_info.ban_tcg}}</ion-col>
+        <ion-col size="4" class="description title">Status Banlist</ion-col>
+        <ion-col *ngIf="card.banlist_info !== undefined" class="{{card.banlist_info.ban_tcg}} description">{{card.banlist_info.ban_tcg}}</ion-col>
+        <ion-col *ngIf="card.banlist_info === undefined" class="description">Unlimited</ion-col>
       </ion-row>
       <ion-row>
         <ion-col size="12" class="description title">

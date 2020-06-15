@@ -16,7 +16,6 @@ import { SpeechRecognition } from '@ionic-native/speech-recognition/ngx';
 import { SharedModule } from './shared/shared.module';
 import { Network } from '@ionic-native/network/ngx';
 import { Insomnia } from '@ionic-native/insomnia/ngx';
-import { AdMob } from '@ionic-native/admob-plus/ngx'; 
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,9 +32,8 @@ import { AdMob } from '@ionic-native/admob-plus/ngx';
     SpeechRecognition,
     SharedModule,
     Network,
-    Insomnia,
-    AdMob
-  ],
+    Insomnia
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

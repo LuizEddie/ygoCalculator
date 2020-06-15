@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <ion-icon name="arrow-back" (click)="backToMenu()" class="icon-back"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <h3>Todos os Cards</h3>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="searchCard($event)" placeholder="Digite o nome do card"></ion-searchbar>
+
+  <div *ngIf="!isSearch">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-radio-group>
+            <ion-item button (click)="sortCards(option.value)" *ngFor="let option of sortOptions" class="sort">
+              <ion-label>{{option.name}} {{check}}</ion-label>
+              <ion-radio slot="start" value="{{option.value}}" checked={{option.isChecked}}></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button (click)="filterCard()" expand="full">Filtros</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3">
+        <ion-button (click)="firstPage()" expand="full">
+          <ion-icon name="rewind"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button (click)="previousPage()" expand="full">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button (click)="nextPage()" expand="full">
+          <ion-icon name="arrow-forward"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button (click)="lastPage()" expand="full">
+          <ion-icon name="fastforward"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>Mostrando {{cardsData.meta.previous_page_offset +100 || 0}} - {{cardsData.meta.next_page_offset || cardsData.meta.total_rows}} de {{cardsData.meta.total_rows}} cards
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </div>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>Card</h2>
+      </ion-col>
+      <ion-col>
+        <h2>Nome</h2>
+      </ion-col>
+      <ion-col>
+        <h2>Lançamento</h2>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngFor="let card of cardsData.cards">
+    <ion-item class={{card.type}} button (click)="goToDetails(card.name)">
+      <ion-row>
+        <ion-col size="4">
+          <img src="{{card.card_images[0].image_url_small}}">
+        </ion-col>
+        <ion-col size="4">
+          <h6>{{card.name}}</h6>
+        </ion-col>
+        <ion-col size="4">
+          <h6>{{card.misc_info[0].tcg_date}}</h6>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

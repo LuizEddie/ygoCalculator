@@ -17,22 +17,20 @@ export class CardDetailPage implements OnInit {
    name: any;
    cardDetail: any;
    pageToBack: any;
-   cardType: any;
    showPrice = false;
    priceTitle = "Mostrar preços";
    showSetDetail = false;
    card_Set: cardSetDetails;
   constructor(private route: ActivatedRoute, private router: Router, private database: DatabaseService) { 
-    this.name = this.getId();
+    this.name = this.getName();
     this.cardDetail = this.getCardDetail();
     this.getPageToBackData();
-    console.log(this.cardType);
   }
 
   ngOnInit() {
   }
 
-  getId(){
+  getName(){
     return this.route.snapshot.paramMap.get('name');
   }
 
@@ -40,17 +38,18 @@ export class CardDetailPage implements OnInit {
     let getNav = this.router.getCurrentNavigation();
     if(getNav.extras.state){
       this.pageToBack = getNav.extras.state.page;
-      this.cardType = getNav.extras.state.type;
     }
   }
 
   getCardDetail(){
-    return this.database.getSpecificCard(this.name);
+    return this.database.getCardData(this.name);
   }
 
   backToPage(){
     if(this.pageToBack === "banlist"){
       this.router.navigate(['/banlist']);
+    }else{
+      this.router.navigate(['/card-list']);
     }
   }
 

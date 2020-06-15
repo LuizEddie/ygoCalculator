@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'calculadora', loadChildren: './duelo/calculadora/calculadora.module#CalculadoraPageModule' },
   { path: 'banlist', loadChildren: './banlist/banlist.module#BanlistPageModule' },
   { path: 'card-detail/:name', loadChildren: './card-detail/card-detail.module#CardDetailPageModule'},
+  { path: 'card-list', loadChildren: './card-list/card-list.module#CardListPageModule' },
 ];
 
 @NgModule({
