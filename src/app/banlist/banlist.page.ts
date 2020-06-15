@@ -51,7 +51,7 @@ export class BanlistPage implements OnInit {
       this.isSearch = true;
       this.searchCard = this.allList.filter((item: BanlistCard)=>{
         return (item.cardName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-      })
+      });
     }else{
       this.isSearch = false;
       this.options[0].checked = true;

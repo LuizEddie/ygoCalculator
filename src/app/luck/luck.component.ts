@@ -11,6 +11,7 @@ export class LuckComponent implements OnInit {
 
   option: any;
   result;
+  disabled = true;
   constructor(private screen: ScreenOrientation, private navParams: NavParams, private modalController: ModalController) {
     this.option = this.navParams.get("type");
     this.toss(this.option);
@@ -39,19 +40,24 @@ export class LuckComponent implements OnInit {
 
   toss(option){
     var count = 10;
-    setInterval(()=>{
-
+    let interval = setInterval(()=>{
+      this.disabled = true;
       if(count > 0){
         this.result = option === "Cara ou Coroa"? this.caraOuCoroa() : this.dados();
-        /*
-        if(option === "Cara ou Coroa"){
-          this.result = this.caraOuCoroa();
-        }else if(option === "Dados"){
-          this.result = this.dados();
-        }*/
+          /*
+          if(option === "Cara ou Coroa"){
+            this.result = this.caraOuCoroa();
+          }else if(option === "Dados"){
+            this.result = this.dados();
+          }*/
         count = --count;
       }
     }, 150);
+
+    setTimeout(()=>{
+      clearInterval(interval);
+      this.disabled = false;
+    }, 1500);
   }
 
   closeModal(){

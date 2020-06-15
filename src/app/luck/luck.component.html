@@ -7,10 +7,10 @@
     <ion-toolbar>
         <ion-row>
             <ion-col>
-                <ion-button expand="full" (click)="closeModal()"><ion-icon name="arrow-back"></ion-icon>Voltar</ion-button>
+                <ion-button expand="full" (click)="closeModal()" [disabled]="disabled"><ion-icon name="arrow-back"></ion-icon>Voltar</ion-button>
             </ion-col>
             <ion-col>
-                <ion-button expand="full" (click)="toss(option)"><ion-icon name="refresh"></ion-icon>Repetir</ion-button>
+                <ion-button expand="full" (click)="toss(option)" [disabled]="disabled"><ion-icon name="refresh"></ion-icon>Repetir</ion-button>
             </ion-col>
         </ion-row>
     </ion-toolbar>

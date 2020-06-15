@@ -20,8 +20,6 @@ export class HomePage {
 
   ngOnInit(){
     this.showBottomBanner();
-    //this.showTopBanner();
-
   }
 
   async tipoDuelo(){
@@ -96,19 +94,6 @@ export class HomePage {
     }, error => {
       console.log(error);
     });
-  }
-
-  async showTopBanner(){
-    let options: AdOptions = {
-      adId: "ca-app-pub-3940256099942544/6300978111",
-      adSize: AdSize.SMART_BANNER,
-      position: AdPosition.TOP_CENTER,
-    }
-      await AdMob.showBanner(options).then((value)=>{
-        console.log(value);
-      }, error=>{
-        console.log(error);
-      })
   }
 
   hideBanner(){

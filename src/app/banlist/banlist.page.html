@@ -36,8 +36,9 @@
   </ion-row>
 
   <div *ngIf="isSearch">
-    <ion-list *ngFor='let card of searchCard'>
-      <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName)">
+    <div *ngIf="searchCard.length !== 0">
+      <ion-list *ngFor='let card of searchCard'>
+        <ion-item class={{card.cardType}} button (click)="goToDetails(card.cardName)">
           <ion-row>
             <ion-col size="4">
               <img src={{card.imgPath}}>
@@ -49,8 +50,12 @@
               <h6>{{card.cardStatus}}</h6>
             </ion-col>
           </ion-row>
-      </ion-item>
-    </ion-list>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div *ngIf="searchCard.length === 0">
+      <h6>Card não encontrado</h6>
+    </div>
   </div>
 
   <div *ngIf="options[1].checked === true || options[0].checked === true">

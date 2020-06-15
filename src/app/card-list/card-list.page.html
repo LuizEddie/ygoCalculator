@@ -78,6 +78,7 @@
     </ion-row>
   </ion-grid>
 
+  <div *ngIf = "cardsData.cards.lenght !== 0">
   <ion-list *ngFor="let card of cardsData.cards">
     <ion-item class={{card.type}} button (click)="goToDetails(card.name)">
       <ion-row>
@@ -93,5 +94,8 @@
       </ion-row>
     </ion-item>
   </ion-list>
-
+</div>
+<div *ngIf = "cardsData.cards.lenght === 0">
+  <h6>Card não encontrado</h6>
+</div>
 </ion-content>
