@@ -36,10 +36,6 @@ export class BanlistPage implements OnInit {
   getAllBanData(){
    return this.database.getAllBanData();
   }
-
-  color(cor){
-    console.log(cor);
-  }
   
   searchBanCard(event){
     const searchTerm = event.srcElement.value;
@@ -96,5 +92,7 @@ export class BanlistPage implements OnInit {
   resumeBanner(){
     AdMob.resumeBanner();
   }
+
+  
 
 }
