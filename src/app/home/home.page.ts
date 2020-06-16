@@ -83,7 +83,7 @@ export class HomePage {
 
   async showBottomBanner(){
     let options: AdOptions = {
-      adId: "ca-app-pub-3940256099942544/6300978111",
+      adId: "ca-app-pub-6210301466309831/2664181112",
       adSize: AdSize.SMART_BANNER,
       position: AdPosition.BOTTOM_CENTER,
       hasTabBar: true
